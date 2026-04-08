@@ -1,36 +1,43 @@
-# Hybrid Data Migration & Storage Integration on AWS
+# AWS Security Architecture for a Two-Tier Web Application
 
 ## Overview
-This project demonstrates a hybrid data migration pattern from an on-premises NFS source to Amazon S3 using AWS DataSync.
+This project demonstrates a security-focused AWS web application architecture using an Application Load Balancer, EC2, security groups, and AWS WAFv2.
 
 ## Goal
-Show how large-scale hybrid data transfers can be structured with YAML-based Infrastructure as Code and documented migration patterns.
+Build a secure web application entry layer with traffic inspection, IP-based blocking, and defense-in-depth controls.
 
 ## Current Scope
-- Amazon S3 destination bucket
-- IAM role for DataSync access
-- AWS DataSync NFS source location
-- AWS DataSync S3 destination location
-- AWS DataSync task
+- VPC
+- Public subnets
+- Internet-facing Application Load Balancer
+- Security groups
+- EC2 web server
+- AWS WAFv2 Web ACL
+- Optional IP-based blocking rules
 
 ## Repository Structure
 - `cloudformation/` – CloudFormation templates
-- `docs/` – architecture and migration notes
+- `docs/` – architecture, threat model, and deployment notes
 
-## Hybrid Migration Context
-This project is designed as part of a broader migration approach that can also include:
-- AWS Direct Connect
-- AWS Site-to-Site VPN
-- AWS Snowball Edge
-- AWS Storage Gateway
+## Current Protections
+- WAFv2 inspection at the entry layer
+- ALB as the public entry point
+- Backend restricted by security groups
+- Parameterized admin access range
+
+## Planned Hardening
+- HTTPS listener with ACM certificate
+- CloudFront in front of the ALB
+- Auto Scaling Group
+- Logging and monitoring enhancements
 
 ## Security Notes
 - No secrets are stored in this repository
 - Environment-specific values are parameterized
-- Real enterprise network details are intentionally omitted
+- SSH access must be restricted to a narrow CIDR
 
-## Roadmap
-- Add architecture diagram
-- Add migration strategy notes
-- Add CI workflow
-- Add optional VPN foundation template
+## Deployment
+Add your deploy command here.
+
+## Cleanup
+Add your cleanup command here.
