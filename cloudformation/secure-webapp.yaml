@@ -16,7 +16,7 @@ Parameters:
 
   AllowedAdminCidr:
     Type: String
-    Default: 0.0.0.0/0
+    Default: 203.0.113.10/32
     Description: CIDR allowed to SSH to the EC2 instance
 
   BlockedIpCidr:
